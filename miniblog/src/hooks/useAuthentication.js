@@ -54,10 +54,17 @@ export const useAuthentication = () => {
             setError(systemErrorMessage);
         };
     };
+
+    //Logout - Sing Out
+    const logout = () =>{
+        checkIfIsCancelled();
+        signOut(auth)
+    }
+
     //Set canceled to true as soon as you leave the page.
     useEffect (() => {
         return () => setCancelled(true);
     }, []);
-    return{ auth, createUser, error, loading };
+    return{ auth, createUser, error, loading, logout };
 
 };
