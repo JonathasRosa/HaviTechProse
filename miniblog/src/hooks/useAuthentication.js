@@ -55,16 +55,37 @@ export const useAuthentication = () => {
         };
     };
 
-    //Logout - Sing Out
+    //Logout - Sing out
     const logout = () =>{
         checkIfIsCancelled();
-        signOut(auth)
+        signOut(auth);
     }
 
+    //Login - Sing in
+    const login = async(data) => {
+        checkIfIsCancelled();
+        setLoading(true);
+        setError(false);
+        try {
+            await signInWithEmailAndPassword(auth, data.email, data.password);
+            setLoading(false);
+        } catch (error) {
+            let systemErrorMessage;
+            if(error.message.includes("user-not-found")){
+                systemErrorMessage = "Usuário não encontrado";
+            } else if (error.message.includes("wrong-password")) {
+                systemErrorMessage = "Senha incorreta."
+            } else {
+                systemErrorMessage = "Ocorreu um erro, por favor tente mais tarde."
+            }
+            setError(systemErrorMessage);
+            setLoading(false);
+        }
+    }
     //Set canceled to true as soon as you leave the page.
     useEffect (() => {
         return () => setCancelled(true);
     }, []);
-    return{ auth, createUser, error, loading, logout };
+    return{ auth, createUser, error, loading, logout, login };
 
 };
