@@ -4,8 +4,8 @@ import { useState } from "react";
 import styles from './Home.module.css';
 
 const Home = ()=> {
-    const [query, setQuery] = useState("");
-    const [post] = useState([]);
+    const [ query, setQuery ] = useState("");
+    const [ post ] = useState([]);
     const handleSubmit = (e) => {
         e.preventDefault();
     }

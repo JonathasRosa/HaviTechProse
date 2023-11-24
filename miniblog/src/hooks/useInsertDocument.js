@@ -24,7 +24,7 @@ export const useInsertDocument = (docCollection) => {
     // State for the document to be inserted.
     const [response, dispatch] = useReducer(insertReducer, initialState);
 
-    //del with memory leak
+    //deal with memory leak
     const [cancelled, setCancelled] = useState(false);
 
     const checkCancelBeforeDispatch = (action) => {
