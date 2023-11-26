@@ -1,5 +1,5 @@
 //Hooks
-import { useNavigate, Link } from "react-router-dom";
+import { Navigate, Link } from "react-router-dom";
 import { useState } from "react";
 import { useFetchDocuments } from "../../hooks/useFetchDocuments";
 
@@ -13,7 +13,10 @@ const Home = ()=> {
     const { documents: posts, loading} = useFetchDocuments("posts");
     const handleSubmit = (e) => {
         e.preventDefault();
-    }
+        if(query) {
+            return Navigate(`/search?q=${query}`)
+        }
+    };
     return (
         <div className={styles.home}>
             <h1>Veja os nossos posts mais recentes.</h1>
