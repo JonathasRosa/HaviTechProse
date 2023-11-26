@@ -32,7 +32,7 @@ function App() {
   }, [auth])
 
   if(loadingUser){
-    return <p>Carregando...</p>
+    return <p>Carregando, aguarde um pouco mais...</p>
   }
 
   return (
