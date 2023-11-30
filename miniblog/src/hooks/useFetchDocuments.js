@@ -5,7 +5,7 @@ import {
     query,
     orderBy,
     onSnapshot,
-    where,
+    where
 } from "firebase/firestore";
 
 export const useFetchDocuments = ( docCollection, search = null, uid = null ) => {
@@ -25,7 +25,7 @@ export const useFetchDocuments = ( docCollection, search = null, uid = null ) =>
                 let q;
                 //busca
                 if(search) {
-                    q = await query( collectionRef, where("tags", "array-contains", search), orderBy("createAd", "desc"))
+                    q = await query( collectionRef, where("tagsArray", "array-contains", search), orderBy("createAd", "desc"))
                 } else {
                     q = await query(collectionRef, orderBy("createAd", "desc"));
                 }

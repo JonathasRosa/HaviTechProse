@@ -49,18 +49,15 @@ export const useAuthentication = () => {
             } else {
                 systemErrorMessage = "Erro ao cadastrar usuário, tente mais tarde!"
             }
-
             setLoading(false);
             setError(systemErrorMessage);
         };
     };
-
     //Logout - Sing out
     const logout = () =>{
         checkIfIsCancelled();
         signOut(auth);
     }
-
     //Login - Sing in
     const login = async(data) => {
         checkIfIsCancelled();
@@ -87,5 +84,4 @@ export const useAuthentication = () => {
         return () => setCancelled(true);
     }, []);
     return{ auth, createUser, error, loading, logout, login };
-
 };

@@ -11,10 +11,10 @@ const CreatePost = () => {
     const [body, setBody] = useState("");
     const [tags, setTags] = useState([]);
     const [formError, setFormError] = useState("");
-    
+
     const { user } = useAuthValue() ;
 
-    const {insertDocument, response } = useInsertDocument("post");
+    const { insertDocument, response } = useInsertDocument("posts");
 
     const navigate = useNavigate();
 
@@ -27,15 +27,17 @@ const CreatePost = () => {
         } catch (error) {
             setFormError("A imagem precisa ser uma URL.");
         }
+
         //Criar o array de tags
         const tagsArray = tags.split(",").map((tag) => tag.trim().toLowerCase());
+        
         //Checar todos os valores
         if(!title || !image || !tags || !body) {
             setFormError("Todos os campos precisam ser preenchidos.");
         }
 
         if(formError) return;
-
+        
         insertDocument ({
             title,
             image,
@@ -70,7 +72,7 @@ const CreatePost = () => {
                 type="text" 
                 name="image" 
                 required
-                placeholder='Insira uma imagem que representa o seu post...'
+                placeholder='Insira uma imagem para o seu post...'
                 onChange={(e) => setImage(e.target.value)} 
                 value={image}
                 />

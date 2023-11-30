@@ -26,19 +26,15 @@ export const useInsertDocument = (docCollection) => {
 
     //deal with memory leak
     const [cancelled, setCancelled] = useState(false);
-
     const checkCancelBeforeDispatch = (action) => {
         if(!cancelled){
             dispatch(action);
         }
     }
-
     const insertDocument = async(document) => {
-
         checkCancelBeforeDispatch({
             type:"LOADING",
         })
-
         try{
             const newDocument = {...document, createdAt: Timestamp.now()};
             const insertedDocument = await addDoc(
