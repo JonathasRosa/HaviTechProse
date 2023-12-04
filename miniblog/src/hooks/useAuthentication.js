@@ -23,7 +23,7 @@ export const useAuthentication = () => {
             return;
         }
     }
-    //User records in the system.
+    //Register
     const createUser = async (data) => {
         checkIfIsCancelled();
         setLoading(true);
