@@ -13,7 +13,7 @@ const insertReducer = (state, action) => {
             return{loading: true, error: null};
         case "INSERT_DOC":
             return{loading: false, error: null};
-        case"ERROR":
+        case "ERROR":
             return{loading: false, error: action.payload};
         default:
             return state;

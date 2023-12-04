@@ -1,8 +1,6 @@
-import React from 'react';
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import { useAuthentication } from "../../hooks/useAuthentication";
 import styles from "./Login.module.css";
-
 
 const Login = () => {
 
@@ -19,7 +17,7 @@ const Login = () => {
             email,
             password
         }
-        const res = await login(user)
+        const res = await login(user);
         console.log(res);
     };
     useEffect(() => {
