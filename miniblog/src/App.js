@@ -18,13 +18,9 @@ import Dashboard from './pages/Dashboard/Dashboard';
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
-
-
 function App() {
-
-  const [user, setUser] =useState(undefined);
-  const {auth} =useAuthentication();
-
+  const [ user, setUser ] = useState(undefined);
+  const { auth } = useAuthentication();
   const loadingUser = user === undefined;
   useEffect(() => {
     onAuthStateChanged(auth, (user) =>{

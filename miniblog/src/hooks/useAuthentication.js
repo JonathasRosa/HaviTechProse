@@ -30,7 +30,9 @@ export const useAuthentication = () => {
         setError(null);
         try {
             const {user} = await createUserWithEmailAndPassword(
-                auth, data.email, data.password
+                auth, 
+                data.email, 
+                data.password
             )
             await updateProfile(user, {
                 displayName: data.displayName
@@ -83,5 +85,12 @@ export const useAuthentication = () => {
     useEffect (() => {
         return () => setCancelled(true);
     }, []);
-    return{ auth, createUser, error, loading, logout, login };
+    return { 
+        auth, 
+        createUser, 
+        error, 
+        loading, 
+        logout, 
+        login 
+    };
 };

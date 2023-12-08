@@ -1,7 +1,6 @@
-import React from 'react'
 import styles from "./Register.module.css";
 
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import { useAuthentication } from "../../hooks/useAuthentication";
 
 const Register = () => {
@@ -17,7 +16,7 @@ const Register = () => {
     const handleSubmit =  async (e) => {
         e.preventDefault()
         setError("")
-        const user ={
+        const user = {
             displayName,
             email,
             password
@@ -85,7 +84,7 @@ const Register = () => {
                     />
                 </label>
                 {!loading && <button className="btn">Cadastrar</button>}
-                {loading && <button className="btn" disable >Aguarde...</button>}
+                {loading && <button className="btn" disabled >Aguarde...</button>}
                 {error && <p className="error">{error}</p>}
             </form>
         </div>
