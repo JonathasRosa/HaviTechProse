@@ -18,14 +18,14 @@ export const useFetchDocuments = ( docCollection, search = null, uid = null ) =>
 
     useEffect(() => {
         async function loadData () {
-            if(cancelled) return
+            if(cancelled) return;
             setLoading(true);
             const collectionRef = await collection(db, docCollection);
             try{
                 let q;
                 //busca
                 if(search) {
-                    q = await query( collectionRef, where("tagsArray", "array-contains", search), orderBy("createAd", "desc"))
+                    q = await query(collectionRef, where("tagsArray", "array-contains", search), orderBy("createAd", "desc"))
                 } else {
                     q = await query(collectionRef, orderBy("createAd", "desc"));
                 }
